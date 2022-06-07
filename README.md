@@ -7,7 +7,7 @@ The EmployeeAdmin App both utilizes and showcases my skillset in deveoping hybri
 
 ## ModularLayered
 
-The codebase has been split into a number of modules(application layer), these modules were constructed on a ornion architcture bases. It's not complete but does showcase the skills needed.
+The codebase has been split into a number of modules(application layer), these modules were constructed on a ornion architcture bases. It's not complete but does showcase the skills needed. I opted to use a custome navigation rather than prism.
 
 ## Software Prerequisites
 
