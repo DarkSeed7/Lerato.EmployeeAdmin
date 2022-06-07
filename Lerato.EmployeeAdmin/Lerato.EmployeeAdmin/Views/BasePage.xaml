@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Lerato.EmployeeAdmin.Views.BasePage"
+             x:Name="basePage">
+    
+    <NavigationPage.TitleView>
+        <Label FontFamily="{StaticResource TrueTypeIcons}" FontSize="40" Margin="10,10,0,0" Text="&#xF05A; LeratoAdmin" TextColor="White" />
+    </NavigationPage.TitleView>
+
+    <Grid RowSpacing="0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" BackgroundColor="{StaticResource LeratoBlue}" HorizontalOptions="FillAndExpand" Padding="0,20,0,20">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Margin="20,0,0,0">
+                <Label Text="&#xF0C5;" Style="{StaticResource NavIcon}" Margin="0,0,-3,0" TextColor="{Binding Source={x:Reference basePage}, Path=ActiveSection, Converter={StaticResource containerToIsSelectedConverter}, ConverterParameter=Employees}" />
+                <Label Text="Employees" Style="{StaticResource NavLabel}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" TextColor="{Binding Source={x:Reference basePage}, Path=ActiveSection, Converter={StaticResource containerToIsSelectedConverter}, ConverterParameter=Employees}" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="EmployeeTapped_Tapped"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Margin="40,0,0,0">
+                <Label Text="&#xF022;" Style="{StaticResource NavIcon}" Margin="0,0,-3,0" />
+                <Label Text="Notes" Style="{StaticResource NavLabel}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+  
+    
+        </Grid>
+
+        <Grid x:Name="ContentGrid" RowSpacing="0" ColumnSpacing="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Row="1" Padding="35,20,35,0">
+            <!--content will go here-->
+        </Grid>
+
+    </Grid>
+
+
+</ContentPage>

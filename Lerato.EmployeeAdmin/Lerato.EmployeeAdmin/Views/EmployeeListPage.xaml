@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:base="clr-namespace:Lerato.EmployeeAdmin.Views"
+             xmlns:behaviors="clr-namespace:Lerato.EmployeeAdmin.Behaviors"
+             x:Class="Lerato.EmployeeAdmin.Views.EmployeeListPage">
+
+    <base:BasePage.ContentContainer>
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="AUTO" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" RowSpacing="0" ColumnSpacing="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="AUTO" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Text="Data" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" FontSize="20" Style="{StaticResource LeratoGrey}"/>
+
+                <SearchBar Grid.Row="0" Grid.Column="1" Style="{StaticResource SearchBar}" HorizontalOptions="FillAndExpand"  VerticalOptions="CenterAndExpand" Text="{Binding SearchText}">
+                    <SearchBar.Behaviors>
+                        <behaviors:EventToCommandBehavior EventName="TextChanged" Command="{Binding SearchTextChangedCommand}" />
+                    </SearchBar.Behaviors>
+                </SearchBar>
+
+                <StackLayout Grid.Row="0" Grid.Column="2" Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Margin="0,0,5,0">
+
+                    <Label FontFamily="{StaticResource TrueTypeIcons}"  Text="&#xF055;"  TextColor="Green" FontSize="36">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command = "{Binding NavigateToAddEmployeeCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+
+            </Grid>
+
+            <ListView x:Name="EmployeeListView"
+                      Grid.Row="1"
+                      HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      SeparatorColor="{StaticResource LeratoGrey}"
+                      IsGroupingEnabled="True"
+                      GroupDisplayBinding="{Binding GroupKey}"
+                      GroupShortNameBinding="{Binding GroupKey}"
+                      ItemsSource="{Binding ListViewItems}"
+                      HasUnevenRows="True"
+                      Margin="10,30,10,0">
+                <ListView.GroupHeaderTemplate >
+                    <DataTemplate>
+                        <TextCell Text="{Binding GroupKey}" TextColor="Black" />
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
+                <ListView.Header>
+                    <StackLayout>
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="AUTO" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4.5*" />
+                                <ColumnDefinition Width="5.5*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Text="Name" FontSize="20" TextColor="{StaticResource LeratoGrey}" HorizontalOptions="StartAndExpand">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding SortCommand}"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                            <Image Grid.Row="0" Grid.Column="0" Source="arrow.png" HorizontalOptions="End" HeightRequest="14" Margin="0,0,15,0">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SortCommand}"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                            <Label Grid.Row="0" Grid.Column="1" Text="Emp Num" FontSize="20" TextColor="{StaticResource LeratoGrey}"  HorizontalOptions="StartAndExpand" />
+                            <Label Grid.Row="0" Grid.Column="2" Text="DOB" FontSize="20" TextColor="{StaticResource LeratoGrey}"  HorizontalOptions="StartAndExpand"  />
+
+                        </Grid>
+                        <BoxView BackgroundColor="{StaticResource LeratoGrey}" HeightRequest="1" Margin="0,30,0,0"/>
+
+                    </StackLayout>
+                </ListView.Header>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Margin="10,15,10,15">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="AUTO"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="2.5*" />
+                                    <ColumnDefinition Width="2.5*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource AvatarPlaceholder}" />
+                                <Label Grid.Row="0" Grid.Column="1" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="14" TextColor="{StaticResource LeratoBlue}" LineBreakMode="TailTruncation">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+
+                                            <Span Text="{Binding LastName}" />
+
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Grid.Row="0" Grid.Column="2" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="14" TextColor="Black" Text="{Binding EmployeeNum}" />
+                                <Label Grid.Row="0" Grid.Column="3" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="14" TextColor="Black" Text="{Binding BirthDate}" />
+                                <Label Grid.Row="0" Grid.Column="4" FontFamily="{StaticResource TrueTypeIcons}" FontSize="20" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Text="&#xF0DA;" TextColor="{StaticResource LeratoBlue}" Margin="0,0,10,0" />
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+            </ListView>
+        </Grid>
+    </base:BasePage.ContentContainer>
+
+</base:BasePage>

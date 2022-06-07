@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:converters="clr-namespace:Lerato.EmployeeAdmin.Converters"
+             x:Class="Lerato.EmployeeAdmin.App">
+    <Application.Resources>
+        <converters:BoolToInverseConverter x:Key="boolToInverseConverter"/>
+        <converters:ContainerToIsSelectedConverter x:Key="containerToIsSelectedConverter" />
+
+        <ResourceDictionary>
+            <OnPlatform x:Key="TrueTypeIcons" 
+                      x:TypeArguments="x:String"
+                      iOS="iconsttf"
+                      Android="icons.ttf#icons"/>
+
+            <OnPlatform x:TypeArguments="x:String" x:Key="Font">
+                <On Platform="Android" Value="Roboto-Regular.ttf#Roboto-Regular" />
+                <On Platform="iOS" Value="Helvetica Neue" />
+            </OnPlatform>
+
+        </ResourceDictionary>
+
+        <!-- Palette / start -->
+        <Color x:Key="LeratoBlue">#387ef5</Color>
+        <Color x:Key="LeratoGrey">#989898</Color>
+        <Color x:Key="Background">#ffffff</Color>
+
+
+        <Style ApplyToDerivedTypes="True" TargetType="Label">
+            <Setter Property="FontFamily" Value="{StaticResource Font}" />
+        </Style>
+
+        <Style ApplyToDerivedTypes="True" TargetType="Button">
+            <Setter Property="FontFamily" Value="{StaticResource Font}" />
+        </Style>
+
+        <Style ApplyToDerivedTypes="True" TargetType="ContentPage">
+            <Setter Property="BackgroundColor" Value="{StaticResource Background}" />
+        </Style>
+
+        <Style ApplyToDerivedTypes="true" TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="{StaticResource LeratoBlue}"/>
+        </Style>
+
+        <Style x:Key="NavIcon" TargetType="Label">
+            <Setter Property="FontFamily" Value="{StaticResource TrueTypeIcons}"/>
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="HorizontalOptions" Value="End"/>
+            <Setter Property="TextColor" Value="Default" />
+        </Style>
+
+        <Style x:Key="NavLabel" TargetType="Label">
+            <Setter Property="HorizontalOptions" Value="Start"/>
+            <Setter Property="TextColor" Value="Default" />
+        </Style>
+
+        <Style x:Key="AvatarPlaceholder" TargetType="Label">
+            <Setter Property="FontFamily" Value="{StaticResource TrueTypeIcons}" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="Text" Value="&#xF007;" />
+            <Setter Property="VerticalOptions" Value="FillAndExpand" />
+        </Style>
+
+        <Style x:Key="gridLabels" TargetType="Label">
+            <Setter Property="TextColor" Value="#0075c9" />
+            <Setter Property="FontSize" Value="Medium"/>
+        </Style>
+
+        <Style x:Key="gridLabelArrow" TargetType="Label">
+            <Setter Property="TextColor" Value="#0075c9" />
+            <Setter Property="FontSize" Value="Default"/>
+            <Setter Property="HorizontalOptions" Value="End"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="gridLabel" TargetType="Label">
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="HorizontalTextAlignment" Value="Center"/>
+            <Setter Property="VerticalTextAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="insideAvatar" TargetType="Label">
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="Visual" Value="Material" />
+        </Style>
+
+        <Style x:Key="SearchBar" TargetType="SearchBar">
+            <Setter Property="Placeholder" Value="Search..."/>
+        </Style>
+
+        <Style x:Key="gridviewSettings" TargetType="Grid">
+            <Setter Property="FlowDirection" Value="LeftToRight"/>
+            <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+
+        </Style>
+        <Style x:Key="columnHeaderStatus" TargetType="Label">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="FontSize" Value="Medium"/>
+        </Style>
+        <Style x:Key="statusValueStyle" TargetType="Image">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+        </Style>
+        
+        <Style x:Key="StatusLabel" TargetType="Label">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="FontSize" Value="Large"/>
+        </Style>
+
+        <Style x:Key="EmployeeSummaryButtons" TargetType="Label">
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+        
+        <!--Device Employee List Styles-->
+        <Style x:Key="GridRowLabels" TargetType="Label">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="TextColor" Value="DarkGray"/>
+        </Style>
+
+        <Style x:Key="NameAndSurnameLabels" TargetType="Label">
+            <Setter Property="TextColor" Value="#0075c9"/>
+            <Setter Property="FontSize" Value="Large"/>
+            <Setter Property="VerticalTextAlignment" Value="Start"/>
+        </Style>
+
+        <Style x:Key="IdDoBLabels" TargetType="Label">
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="TextColor" Value="Gray"/>
+        </Style>
+
+        <Style x:Key="SwitchStyles" TargetType="Switch">
+            <Setter Property="OnColor" Value="#0075c9"/>
+        </Style>
+
+    </Application.Resources>
+</Application>
